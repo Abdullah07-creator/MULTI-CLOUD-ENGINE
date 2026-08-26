@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Application Dependencies
+      - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f app/requirements.txt ]; then pip install -r app/requirements.txt; fi
@@ -45,7 +45,7 @@ jobs:
         run: |
           docker build -t ${{ env.IMAGE_TAG }} -f Dockerfile . || docker build -t ${{ env.IMAGE_TAG }} -f app/Dockerfile app/
 
-      - name: Run Trivy Security Vulnerability Scanner
+      - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: '${{ env.IMAGE_TAG }}'
@@ -55,7 +55,7 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
-      - name: Push Container Image to GHCR
+      - name: Push Image to GHCR
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           docker push ${{ env.IMAGE_TAG }}
