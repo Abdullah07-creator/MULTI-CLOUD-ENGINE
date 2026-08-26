@@ -1,0 +1,9 @@
+*.tfstate
+*.tfstate.backup
+.terraform/
+*.tfvars
+*.pem
+*.json
+gcp-key.json
+.env
+.DS_Store
