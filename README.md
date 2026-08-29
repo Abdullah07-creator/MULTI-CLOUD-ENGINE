@@ -20,8 +20,7 @@ multi-cloud-engine/
 └── README.md    
 
 Provision Infrastructure via Terraform
-Bash
+
 cd terraform
 terraform init
 terraform apply -auto-approve
-
