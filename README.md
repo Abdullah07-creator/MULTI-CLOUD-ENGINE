@@ -22,5 +22,7 @@ multi-cloud-engine/
 Provision Infrastructure via Terraform
 
 cd terraform
+
 terraform init
+
 terraform apply -auto-approve
